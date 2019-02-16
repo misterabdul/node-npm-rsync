@@ -1,4 +1,4 @@
-FROM node:6.11.4
+FROM node:8.15.0
 
 MAINTAINER dollyaswin "dolly.aswin@gmail.com"
 
