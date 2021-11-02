@@ -1,0 +1,34 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - "master"
+    tags:
+      - ".*"
+
+jobs:
+  build:
+    environment: DOCKERHUB
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.ACCOUNT_USERNAME }}
+          password: ${{ secrets.ACCOUNT_PASSWORD }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: misterabdul/node-npm-rsync
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
