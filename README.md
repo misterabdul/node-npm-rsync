@@ -1,4 +1,4 @@
-# Node Container With Npm V.6 
+# Node Container With NPM
 
 [![dockeri.co](http://dockeri.co/image/xtendindonesia/node-npm-rsync)](https://hub.docker.com/r/xtendindonesia/node-npm-rsync/)
 
